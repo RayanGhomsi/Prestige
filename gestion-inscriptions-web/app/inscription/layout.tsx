@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/hooks/useAuth';
@@ -12,6 +13,12 @@ export default function InscriptionLayout({
 }) {
   const { user, profile, loading, signOut } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [loading, user, router]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -27,7 +34,6 @@ export default function InscriptionLayout({
   }
 
   if (!user) {
-    router.push('/login');
     return null;
   }
 

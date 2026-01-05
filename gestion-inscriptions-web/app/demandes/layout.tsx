@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/hooks/useAuth';
 import Navigation from '@/components/ui/Navigation';
@@ -11,6 +12,12 @@ export default function DemandesLayout({
 }) {
   const { user, profile, loading, signOut } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [loading, user, router]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -26,7 +33,6 @@ export default function DemandesLayout({
   }
 
   if (!user) {
-    router.push('/login');
     return null;
   }
 

@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd gestion-inscriptions-web && npm run build",
+  "outputDirectory": "gestion-inscriptions-web/.next",
+  "installCommand": "cd gestion-inscriptions-web && npm install"
+}

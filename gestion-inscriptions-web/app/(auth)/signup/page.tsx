@@ -131,7 +131,7 @@ export default function SignupPage() {
               type="tel"
               {...register('telephone')}
               error={errors.telephone?.message}
-              placeholder="0600000000"
+              placeholder="690000000"
               autoComplete="tel"
               required
             />

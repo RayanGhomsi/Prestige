@@ -20,28 +20,28 @@ export const etape2Schema = z.object({
   pere_profession: z.string().min(2, 'La profession du père est requise'),
   pere_telephone: z
     .string()
-    .regex(/^[0-9]{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
   pere_email: z.string().email('Email invalide'),
   mere_nom: z.string().min(2, 'Le nom de la mère est requis'),
   mere_prenom: z.string().min(2, 'Le prénom de la mère est requis'),
   mere_profession: z.string().min(2, 'La profession de la mère est requise'),
   mere_telephone: z
     .string()
-    .regex(/^[0-9]{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
   mere_email: z.string().email('Email invalide'),
   tuteur_nom: z.string().optional(),
   tuteur_prenom: z.string().optional(),
   tuteur_lien: z.string().optional(),
   tuteur_telephone: z
     .string()
-    .regex(/^[0-9]{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres')
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres')
     .optional()
     .or(z.literal('')),
   adresse_complete: z.string().min(10, "L'adresse complète est requise"),
   urgence_nom: z.string().min(2, 'Le nom de la personne à contacter est requis'),
   urgence_telephone: z
     .string()
-    .regex(/^[0-9]{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
   urgence_lien: z.string().min(2, 'Le lien de parenté est requis'),
 });
 
@@ -56,7 +56,7 @@ export const etape3Schema = z.object({
   medecin_nom: z.string().min(2, 'Le nom du médecin est requis'),
   medecin_telephone: z
     .string()
-    .regex(/^[0-9]{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
 });
 
 export type Etape3FormData = z.infer<typeof etape3Schema>;
@@ -73,7 +73,7 @@ export const signupSchema = z.object({
   email: z.string().email('Email invalide'),
   telephone: z
     .string()
-    .regex(/^[0-9]{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
   password: z
     .string()
     .min(8, 'Le mot de passe doit contenir au moins 8 caractères')

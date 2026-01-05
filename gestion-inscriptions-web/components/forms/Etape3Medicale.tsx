@@ -110,7 +110,7 @@ export default function Etape3Medicale({
               <Input
                 label="Téléphone du médecin"
                 type="tel"
-                placeholder="0600000000"
+                placeholder="690000000"
                 {...register('medecin_telephone')}
                 error={errors.medecin_telephone?.message}
                 required

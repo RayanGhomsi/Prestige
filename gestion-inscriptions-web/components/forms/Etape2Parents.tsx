@@ -73,7 +73,7 @@ export default function Etape2Parents({
                 <Input
                   label="Téléphone"
                   type="tel"
-                  placeholder="0600000000"
+                  placeholder="690000000"
                   {...register('pere_telephone')}
                   error={errors.pere_telephone?.message}
                   required
@@ -119,7 +119,7 @@ export default function Etape2Parents({
                 <Input
                   label="Téléphone"
                   type="tel"
-                  placeholder="0600000000"
+                  placeholder="690000000"
                   {...register('mere_telephone')}
                   error={errors.mere_telephone?.message}
                   required
@@ -165,7 +165,7 @@ export default function Etape2Parents({
                 <Input
                   label="Téléphone"
                   type="tel"
-                  placeholder="0600000000"
+                  placeholder="690000000"
                   {...register('tuteur_telephone')}
                   error={errors.tuteur_telephone?.message}
                 />
@@ -196,7 +196,7 @@ export default function Etape2Parents({
                 <Input
                   label="Téléphone (urgence)"
                   type="tel"
-                  placeholder="0600000000"
+                  placeholder="690000000"
                   {...register('urgence_telephone')}
                   error={errors.urgence_telephone?.message}
                   required

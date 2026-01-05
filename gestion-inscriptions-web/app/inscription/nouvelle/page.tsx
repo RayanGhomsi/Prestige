@@ -315,19 +315,19 @@ export default function NouvelleInscriptionPage() {
   };
 
   return (
-    <div className="py-12">
+    <div className="py-6 sm:py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Nouvelle demande d'inscription</h1>
-          <p className="mt-2 text-gray-600">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Nouvelle demande d'inscription</h1>
+          <p className="mt-2 text-sm sm:text-base text-gray-600">
             Complétez le formulaire en 5 étapes simples. Vos données sont automatiquement
             sauvegardées.
           </p>
         </div>
 
         {/* Step Indicator */}
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           <StepIndicator steps={STEPS} currentStep={formulaireDonnees.etape_actuelle} />
         </div>
 

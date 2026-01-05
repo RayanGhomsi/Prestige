@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 import { FileText, Clock, CheckCircle, Users } from 'lucide-react';
+import HomeHeader from '@/components/layout/HomeHeader';
 
 export default async function HomePage() {
   const supabase = await createServerClient();
@@ -12,42 +13,20 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white">
       {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-primary-600">École Prestige</h1>
-            <div className="flex gap-4">
-              {isAuthenticated ? (
-                <Link href="/dashboard">
-                  <Button>Mon tableau de bord</Button>
-                </Link>
-              ) : (
-                <>
-                  <Link href="/login">
-                    <Button variant="outline">Connexion</Button>
-                  </Link>
-                  <Link href="/signup">
-                    <Button>Créer un compte</Button>
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
-      </header>
+      <HomeHeader isAuthenticated={isAuthenticated} />
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
         <div className="text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4">
             Inscriptions en ligne simplifiées
           </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto">
             Inscrivez votre enfant à l'École Prestige en quelques minutes grâce à notre
             plateforme en ligne sécurisée et intuitive.
           </p>
           <Link href="/inscription/nouvelle">
-            <Button size="lg" className="px-8">
+            <Button size="lg" className="px-6 sm:px-8">
               Nouvelle inscription
             </Button>
           </Link>
@@ -55,19 +34,19 @@ export default async function HomePage() {
       </section>
 
       {/* Processus d'inscription */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+        <h3 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12">
           Comment ça marche ?
         </h3>
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
           <Card variant="elevated">
-            <CardContent className="pt-6">
+            <CardContent className="pt-4 sm:pt-6">
               <div className="flex flex-col items-center text-center">
-                <div className="bg-primary-100 p-4 rounded-full mb-4">
-                  <Users className="h-8 w-8 text-primary-600" />
+                <div className="bg-primary-100 p-3 sm:p-4 rounded-full mb-3 sm:mb-4">
+                  <Users className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />
                 </div>
-                <h4 className="font-semibold text-lg mb-2">1. Créez un compte</h4>
-                <p className="text-gray-600 text-sm">
+                <h4 className="font-semibold text-sm sm:text-lg mb-1 sm:mb-2">1. Créez un compte</h4>
+                <p className="text-gray-600 text-xs sm:text-sm">
                   Inscrivez-vous en tant que parent avec votre email
                 </p>
               </div>
@@ -75,13 +54,13 @@ export default async function HomePage() {
           </Card>
 
           <Card variant="elevated">
-            <CardContent className="pt-6">
+            <CardContent className="pt-4 sm:pt-6">
               <div className="flex flex-col items-center text-center">
-                <div className="bg-primary-100 p-4 rounded-full mb-4">
-                  <FileText className="h-8 w-8 text-primary-600" />
+                <div className="bg-primary-100 p-3 sm:p-4 rounded-full mb-3 sm:mb-4">
+                  <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />
                 </div>
-                <h4 className="font-semibold text-lg mb-2">2. Remplissez le formulaire</h4>
-                <p className="text-gray-600 text-sm">
+                <h4 className="font-semibold text-sm sm:text-lg mb-1 sm:mb-2">2. Remplissez le formulaire</h4>
+                <p className="text-gray-600 text-xs sm:text-sm">
                   Complétez les informations et téléchargez les documents
                 </p>
               </div>
@@ -89,13 +68,13 @@ export default async function HomePage() {
           </Card>
 
           <Card variant="elevated">
-            <CardContent className="pt-6">
+            <CardContent className="pt-4 sm:pt-6">
               <div className="flex flex-col items-center text-center">
-                <div className="bg-primary-100 p-4 rounded-full mb-4">
-                  <Clock className="h-8 w-8 text-primary-600" />
+                <div className="bg-primary-100 p-3 sm:p-4 rounded-full mb-3 sm:mb-4">
+                  <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600" />
                 </div>
-                <h4 className="font-semibold text-lg mb-2">3. Suivez votre demande</h4>
-                <p className="text-gray-600 text-sm">
+                <h4 className="font-semibold text-sm sm:text-lg mb-1 sm:mb-2">3. Suivez votre demande</h4>
+                <p className="text-gray-600 text-xs sm:text-sm">
                   Consultez le statut en temps réel depuis votre tableau de bord
                 </p>
               </div>
@@ -103,13 +82,13 @@ export default async function HomePage() {
           </Card>
 
           <Card variant="elevated">
-            <CardContent className="pt-6">
+            <CardContent className="pt-4 sm:pt-6">
               <div className="flex flex-col items-center text-center">
-                <div className="bg-secondary-100 p-4 rounded-full mb-4">
-                  <CheckCircle className="h-8 w-8 text-secondary-600" />
+                <div className="bg-secondary-100 p-3 sm:p-4 rounded-full mb-3 sm:mb-4">
+                  <CheckCircle className="h-6 w-6 sm:h-8 sm:w-8 text-secondary-600" />
                 </div>
-                <h4 className="font-semibold text-lg mb-2">4. Recevez la confirmation</h4>
-                <p className="text-gray-600 text-sm">
+                <h4 className="font-semibold text-sm sm:text-lg mb-1 sm:mb-2">4. Recevez la confirmation</h4>
+                <p className="text-gray-600 text-xs sm:text-sm">
                   Nous vous notifions par email de l'avancement
                 </p>
               </div>
@@ -119,11 +98,11 @@ export default async function HomePage() {
       </section>
 
       {/* Documents requis */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50 rounded-lg my-16">
-        <h3 className="text-3xl font-bold text-center text-gray-900 mb-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 bg-gray-50 rounded-lg my-8 sm:my-16">
+        <h3 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-6 sm:mb-8">
           Documents requis
         </h3>
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
           <Card>
             <CardHeader>
               <CardTitle>Documents obligatoires</CardTitle>
@@ -167,8 +146,8 @@ export default async function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+        <h3 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 sm:mb-12">
           Questions fréquentes
         </h3>
         <div className="space-y-6">
@@ -212,9 +191,9 @@ export default async function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-3 gap-8">
+      <footer className="bg-gray-900 text-white mt-8 sm:mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             <div>
               <h5 className="font-semibold text-lg mb-4">École Prestige</h5>
               <p className="text-gray-400">

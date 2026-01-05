@@ -58,7 +58,7 @@ export default function Etape5Recapitulatif({
                 Modifier
               </button>
             </div>
-            <dl className="grid grid-cols-2 gap-4 text-sm">
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
               <div>
                 <dt className="font-medium text-gray-700">Nom complet</dt>
                 <dd className="text-gray-900">
@@ -81,7 +81,7 @@ export default function Etape5Recapitulatif({
                   {donnees.etape1.sexe === 'M' ? 'Masculin' : 'Féminin'}
                 </dd>
               </div>
-              <div className="col-span-2">
+              <div className="sm:col-span-2">
                 <dt className="font-medium text-gray-700">Classe souhaitée</dt>
                 <dd className="text-gray-900">{donnees.etape1.classe_souhaitee}</dd>
               </div>
@@ -157,7 +157,7 @@ export default function Etape5Recapitulatif({
                 Modifier
               </button>
             </div>
-            <dl className="grid grid-cols-2 gap-4 text-sm">
+            <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
               <div>
                 <dt className="font-medium text-gray-700">Groupe sanguin</dt>
                 <dd className="text-gray-900">{donnees.etape3.groupe_sanguin}</dd>
@@ -171,7 +171,7 @@ export default function Etape5Recapitulatif({
                 </dd>
               </div>
               {donnees.etape3.allergies && (
-                <div className="col-span-2">
+                <div className="sm:col-span-2">
                   <dt className="font-medium text-gray-700">Allergies</dt>
                   <dd className="text-gray-900">{donnees.etape3.allergies}</dd>
                 </div>

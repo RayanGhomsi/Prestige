@@ -47,7 +47,7 @@ export default function Etape2Parents({
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations du père</h3>
             <div className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Nom"
                   {...register('pere_nom')}
@@ -69,7 +69,7 @@ export default function Etape2Parents({
                 required
               />
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Téléphone"
                   type="tel"
@@ -93,7 +93,7 @@ export default function Etape2Parents({
           <div className="border-t border-gray-200 pt-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations de la mère</h3>
             <div className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Nom"
                   {...register('mere_nom')}
@@ -115,7 +115,7 @@ export default function Etape2Parents({
                 required
               />
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Téléphone"
                   type="tel"
@@ -142,7 +142,7 @@ export default function Etape2Parents({
             </h3>
             <p className="text-sm text-gray-600 mb-4">Ces informations sont optionnelles</p>
             <div className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Nom"
                   {...register('tuteur_nom')}
@@ -155,7 +155,7 @@ export default function Etape2Parents({
                 />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Lien de parenté"
                   placeholder="Ex: Grand-père, Oncle..."
@@ -186,7 +186,7 @@ export default function Etape2Parents({
                 required
               />
 
-              <div className="grid md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <Input
                   label="Personne à contacter (urgence)"
                   {...register('urgence_nom')}

@@ -65,7 +65,7 @@ export default function Etape1Enfant({ defaultValues, onNext }: Etape1EnfantProp
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Nom"
               {...register('nom')}
@@ -81,7 +81,7 @@ export default function Etape1Enfant({ defaultValues, onNext }: Etape1EnfantProp
             />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label="Date de naissance"
               type="date"

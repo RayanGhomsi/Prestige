@@ -71,13 +71,13 @@ export default function DemandesPage() {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 sm:mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Mes demandes d'inscription</h1>
-          <p className="text-gray-600 mt-1">Suivez l'état de vos demandes d'inscription</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Mes demandes d'inscription</h1>
+          <p className="text-sm sm:text-base text-gray-600 mt-1">Suivez l'état de vos demandes d'inscription</p>
         </div>
         <Link href="/inscription/nouvelle">
-          <Button>
+          <Button className="w-full sm:w-auto">
             <Plus className="h-4 w-4 mr-2" />
             Nouvelle demande
           </Button>
@@ -86,10 +86,10 @@ export default function DemandesPage() {
 
       {demandes.length === 0 ? (
         <Card>
-          <CardContent className="py-12 text-center">
-            <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Aucune demande</h3>
-            <p className="text-gray-600 mb-6">
+          <CardContent className="py-8 sm:py-12 text-center">
+            <FileText className="h-10 w-10 sm:h-12 sm:w-12 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">Aucune demande</h3>
+            <p className="text-sm sm:text-base text-gray-600 mb-6">
               Vous n'avez pas encore soumis de demande d'inscription.
             </p>
             <Link href="/inscription/nouvelle">
@@ -106,25 +106,25 @@ export default function DemandesPage() {
             return (
               <Card key={demande.id} className="hover:shadow-md transition-shadow">
                 <CardContent className="py-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <div className="bg-primary-100 p-3 rounded-full">
-                        <FileText className="h-6 w-6 text-primary-600" />
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div className="flex items-center space-x-3 sm:space-x-4">
+                      <div className="bg-primary-100 p-2 sm:p-3 rounded-full flex-shrink-0">
+                        <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-primary-600" />
                       </div>
-                      <div>
-                        <h3 className="font-medium text-gray-900">
+                      <div className="min-w-0">
+                        <h3 className="font-medium text-gray-900 truncate">
                           {enfant?.prenom} {enfant?.nom}
                         </h3>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs sm:text-sm text-gray-500">
                           {enfant?.niveau_demande || 'Niveau non spécifié'} • 
                           Créée le {new Date(demande.created_at).toLocaleDateString('fr-FR')}
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-4">
-                      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${statut.color}`}>
+                    <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4">
+                      <span className={`inline-flex items-center px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${statut.color}`}>
                         {statut.icon}
-                        <span className="ml-2">{statut.label}</span>
+                        <span className="ml-1 sm:ml-2">{statut.label}</span>
                       </span>
                       <Link href={`/inscription/${demande.id}`}>
                         <Button variant="outline" size="sm">Voir détails</Button>

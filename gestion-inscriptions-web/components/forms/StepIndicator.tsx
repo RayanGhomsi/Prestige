@@ -15,13 +15,35 @@ interface StepIndicatorProps {
 export default function StepIndicator({ steps, currentStep }: StepIndicatorProps) {
   return (
     <nav aria-label="Progress">
-      <ol className="flex items-center justify-between">
+      {/* Mobile: Affichage simplifié */}
+      <div className="sm:hidden">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm font-medium text-primary-600">
+            Étape {currentStep} sur {steps.length}
+          </span>
+          <span className="text-sm text-gray-500">
+            {steps[currentStep - 1]?.title}
+          </span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-2">
+          <div
+            className="bg-primary-600 h-2 rounded-full transition-all duration-500"
+            style={{ width: `${(currentStep / steps.length) * 100}%` }}
+          />
+        </div>
+        <p className="mt-2 text-xs text-gray-500 text-center">
+          {steps[currentStep - 1]?.description}
+        </p>
+      </div>
+
+      {/* Desktop: Affichage complet */}
+      <ol className="hidden sm:flex items-center justify-between">
         {steps.map((step, index) => (
           <li
             key={step.number}
             className={cn(
               'relative flex-1',
-              index !== steps.length - 1 && 'pr-8 sm:pr-20'
+              index !== steps.length - 1 && 'pr-8 lg:pr-20'
             )}
           >
             {/* Progress Line */}
@@ -70,10 +92,10 @@ export default function StepIndicator({ steps, currentStep }: StepIndicatorProps
               </span>
 
               {/* Step Info */}
-              <span className="ml-4 flex min-w-0 flex-col">
+              <span className="ml-3 lg:ml-4 flex min-w-0 flex-col">
                 <span
                   className={cn(
-                    'text-sm font-medium transition-colors',
+                    'text-xs lg:text-sm font-medium transition-colors whitespace-nowrap',
                     step.number === currentStep && 'text-primary-600',
                     step.number < currentStep && 'text-primary-600',
                     step.number > currentStep && 'text-gray-500'
@@ -81,7 +103,7 @@ export default function StepIndicator({ steps, currentStep }: StepIndicatorProps
                 >
                   {step.title}
                 </span>
-                <span className="text-xs text-gray-500 hidden sm:block">
+                <span className="text-xs text-gray-500 hidden lg:block">
                   {step.description}
                 </span>
               </span>

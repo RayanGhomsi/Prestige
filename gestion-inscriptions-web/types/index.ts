@@ -157,45 +157,16 @@ export interface Classe {
 }
 
 // Formulaire d'inscription multi-étapes
-export interface FormulaireEtape1 {
-  nom: string;
-  prenom: string;
-  date_naissance: string;
-  lieu_naissance: string;
-  sexe: 'M' | 'F';
-  classe_souhaitee: ClasseType;
-  photo?: File;
-}
+// Types inférés des schémas de validation
+import type {
+  Etape1FormData,
+  Etape2FormData,
+  Etape3FormData,
+} from '@/lib/validators/inscription';
 
-export interface FormulaireEtape2 {
-  pere_nom: string;
-  pere_prenom: string;
-  pere_profession: string;
-  pere_telephone: string;
-  pere_email: string;
-  mere_nom: string;
-  mere_prenom: string;
-  mere_profession: string;
-  mere_telephone: string;
-  mere_email: string;
-  tuteur_nom?: string;
-  tuteur_prenom?: string;
-  tuteur_lien?: string;
-  tuteur_telephone?: string;
-  adresse_complete: string;
-  urgence_nom: string;
-  urgence_telephone: string;
-  urgence_lien: string;
-}
-
-export interface FormulaireEtape3 {
-  groupe_sanguin: string;
-  allergies?: string;
-  maladies_chroniques?: string;
-  traitements_en_cours?: string;
-  medecin_nom: string;
-  medecin_telephone: string;
-}
+export type FormulaireEtape1 = Etape1FormData;
+export type FormulaireEtape2 = Etape2FormData;
+export type FormulaireEtape3 = Etape3FormData;
 
 export interface FormulaireEtape4 {
   acte_naissance?: File;

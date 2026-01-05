@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createBrowserClient } from '@/lib/supabase/client';
-import type { User } from '@supabase/supabase-js';
+import type { User, Session, AuthChangeEvent } from '@supabase/supabase-js';
 import type { UserProfile } from '@/types';
 
 export function useAuth() {
@@ -11,20 +11,23 @@ export function useAuth() {
 
   useEffect(() => {
     // Récupérer la session initiale
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      const currentUser = session?.user ?? null;
+    const getInitialSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      const currentUser = data.session?.user ?? null;
       setUser(currentUser);
       if (currentUser) {
         fetchProfile(currentUser);
       } else {
         setLoading(false);
       }
-    });
+    };
+
+    getInitialSession();
 
     // Écouter les changements d'authentification
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
       const currentUser = session?.user ?? null;
       setUser(currentUser);
       if (currentUser) {
@@ -59,7 +62,6 @@ export function useAuth() {
           id: currentUser.id,
           email: currentUser.email || '',
           role: 'parent',
-          parent: null,
         });
       }
     } catch (error) {
@@ -69,7 +71,6 @@ export function useAuth() {
         id: currentUser.id,
         email: currentUser.email || '',
         role: 'parent',
-        parent: null,
       });
     } finally {
       setLoading(false);

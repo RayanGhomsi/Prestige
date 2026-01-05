@@ -6,11 +6,12 @@ export const etape1Schema = z.object({
   prenom: z.string().min(2, 'Le prénom doit contenir au moins 2 caractères'),
   date_naissance: z.string().min(1, 'La date de naissance est requise'),
   lieu_naissance: z.string().min(2, 'Le lieu de naissance est requis'),
-  sexe: z.enum(['M', 'F'], {
-    required_error: 'Le sexe est requis',
-  }),
+  sexe: z.enum(['M', 'F'], { message: 'Le sexe est requis' }),
   classe_souhaitee: z.string().min(1, 'La classe souhaitée est requise'),
+  photo: z.instanceof(File).optional(),
 });
+
+export type Etape1FormData = z.infer<typeof etape1Schema>;
 
 // Schéma de validation pour l'étape 2 - Informations des parents
 export const etape2Schema = z.object({
@@ -44,6 +45,8 @@ export const etape2Schema = z.object({
   urgence_lien: z.string().min(2, 'Le lien de parenté est requis'),
 });
 
+export type Etape2FormData = z.infer<typeof etape2Schema>;
+
 // Schéma de validation pour l'étape 3 - Informations médicales
 export const etape3Schema = z.object({
   groupe_sanguin: z.string().min(1, 'Le groupe sanguin est requis'),
@@ -55,6 +58,8 @@ export const etape3Schema = z.object({
     .string()
     .regex(/^[0-9]{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
 });
+
+export type Etape3FormData = z.infer<typeof etape3Schema>;
 
 // Schéma d'authentification
 export const loginSchema = z.object({

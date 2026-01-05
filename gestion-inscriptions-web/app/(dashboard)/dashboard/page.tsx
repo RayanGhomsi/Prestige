@@ -65,10 +65,10 @@ export default function DashboardPage() {
       // Calculer les statistiques
       const newStats = {
         total: data?.length || 0,
-        en_attente: data?.filter((d) => d.statut === 'en_attente').length || 0,
-        en_cours: data?.filter((d) => d.statut === 'en_cours').length || 0,
-        acceptees: data?.filter((d) => d.statut === 'acceptee').length || 0,
-        refusees: data?.filter((d) => d.statut === 'refusee').length || 0,
+        en_attente: data?.filter((d: DemandeInscription) => d.statut === 'en_attente').length || 0,
+        en_cours: data?.filter((d: DemandeInscription) => d.statut === 'en_cours').length || 0,
+        acceptees: data?.filter((d: DemandeInscription) => d.statut === 'acceptee').length || 0,
+        refusees: data?.filter((d: DemandeInscription) => d.statut === 'refusee').length || 0,
       };
 
       setStats(newStats);

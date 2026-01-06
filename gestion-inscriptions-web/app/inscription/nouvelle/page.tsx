@@ -305,7 +305,7 @@ export default function NouvelleInscriptionPage() {
 
       // 6. Rediriger vers la page de confirmation
       console.log('Succès! Redirection...');
-      router.push(`/inscription/confirmation?numero=${numeroDemande}`);
+      router.push(`/inscription/confirmation?numero=${numeroDemande}&id=${demande.id}`);
     } catch (err: any) {
       console.error('Erreur lors de la soumission:', err);
       setError(err.message || 'Une erreur est survenue lors de la soumission de la demande');

@@ -13,6 +13,7 @@ export default function ConfirmationPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const numeroDemande = searchParams.get('numero');
+  const demandeId = searchParams.get('id');
   const { resetFormulaire } = useInscriptionStore();
 
   useEffect(() => {
@@ -93,12 +94,14 @@ export default function ConfirmationPage() {
                   </Button>
                 </Link>
 
-                <Link href={`/demandes/${numeroDemande}`}>
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                    <FileText className="h-4 w-4 mr-2" />
-                    Voir ma demande
-                  </Button>
-                </Link>
+                {demandeId && (
+                  <Link href={`/demandes/${demandeId}`}>
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Voir ma demande
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
           </CardContent>

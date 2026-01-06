@@ -38,27 +38,26 @@ export default function Etape2Parents({
       <CardHeader>
         <CardTitle>Informations des parents</CardTitle>
         <CardDescription>
-          Veuillez fournir les coordonnées complètes des parents ou tuteurs légaux
+          Remplissez les coordonnées d'au moins un parent (père ou mère)
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           {/* Informations Père */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations du père</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Informations du père</h3>
+            <p className="text-sm text-gray-600 mb-4">Ces informations sont optionnelles</p>
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Nom"
                   {...register('pere_nom')}
                   error={errors.pere_nom?.message}
-                  required
                 />
                 <Input
                   label="Prénom"
                   {...register('pere_prenom')}
                   error={errors.pere_prenom?.message}
-                  required
                 />
               </div>
 
@@ -66,7 +65,6 @@ export default function Etape2Parents({
                 label="Profession"
                 {...register('pere_profession')}
                 error={errors.pere_profession?.message}
-                required
               />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -76,14 +74,12 @@ export default function Etape2Parents({
                   placeholder="690000000"
                   {...register('pere_telephone')}
                   error={errors.pere_telephone?.message}
-                  required
                 />
                 <Input
                   label="Email"
                   type="email"
                   {...register('pere_email')}
                   error={errors.pere_email?.message}
-                  required
                 />
               </div>
             </div>
@@ -91,20 +87,19 @@ export default function Etape2Parents({
 
           {/* Informations Mère */}
           <div className="border-t border-gray-200 pt-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Informations de la mère</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Informations de la mère</h3>
+            <p className="text-sm text-gray-600 mb-4">Ces informations sont optionnelles</p>
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Nom"
                   {...register('mere_nom')}
                   error={errors.mere_nom?.message}
-                  required
                 />
                 <Input
                   label="Prénom"
                   {...register('mere_prenom')}
                   error={errors.mere_prenom?.message}
-                  required
                 />
               </div>
 
@@ -112,7 +107,6 @@ export default function Etape2Parents({
                 label="Profession"
                 {...register('mere_profession')}
                 error={errors.mere_profession?.message}
-                required
               />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -122,14 +116,12 @@ export default function Etape2Parents({
                   placeholder="690000000"
                   {...register('mere_telephone')}
                   error={errors.mere_telephone?.message}
-                  required
                 />
                 <Input
                   label="Email"
                   type="email"
                   {...register('mere_email')}
                   error={errors.mere_email?.message}
-                  required
                 />
               </div>
             </div>
@@ -183,7 +175,7 @@ export default function Etape2Parents({
                 error={errors.adresse_complete?.message}
                 rows={3}
                 placeholder="Numéro, rue, quartier, ville..."
-                required
+                helperText="Optionnel"
               />
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

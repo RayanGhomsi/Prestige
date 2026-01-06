@@ -54,7 +54,7 @@ export default function DashboardPage() {
 
       const { data, error } = await supabase
         .from('demandes_inscription')
-        .select('*')
+        .select('*, eleves(nom, prenom)')
         .eq('parent_id', profile.parent.id)
         .order('created_at', { ascending: false });
 
@@ -203,41 +203,46 @@ export default function DashboardPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {demandes.map((demande) => (
-                <div
-                  key={demande.id}
-                  className="border border-gray-200 rounded-lg p-4 hover:border-primary-300 transition-colors"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900">
-                          {demande.numero_demande}
-                        </h3>
-                        {getStatutBadge(demande.statut)}
+              {demandes.map((demande) => {
+                const eleve = (demande as any).eleves
+                  ? (Array.isArray((demande as any).eleves) ? (demande as any).eleves[0] : (demande as any).eleves)
+                  : null;
+                return (
+                  <div
+                    key={demande.id}
+                    className="border border-gray-200 rounded-lg p-4 hover:border-primary-300 transition-colors"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h3 className="text-lg font-semibold text-gray-900">
+                            {eleve ? `${eleve.prenom} ${eleve.nom}` : demande.numero_demande}
+                          </h3>
+                          {getStatutBadge(demande.statut)}
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-600">
+                          <p>
+                            <span className="font-medium">Classe souhaitée :</span>{' '}
+                            {demande.classe_souhaitee}
+                          </p>
+                          <p>
+                            <span className="font-medium">Date de soumission :</span>{' '}
+                            {demande.date_soumission
+                              ? formatDate(demande.date_soumission)
+                              : 'Brouillon'}
+                          </p>
+                        </div>
                       </div>
-                      <div className="grid md:grid-cols-2 gap-2 text-sm text-gray-600">
-                        <p>
-                          <span className="font-medium">Classe souhaitée :</span>{' '}
-                          {demande.classe_souhaitee}
-                        </p>
-                        <p>
-                          <span className="font-medium">Date de soumission :</span>{' '}
-                          {demande.date_soumission
-                            ? formatDate(demande.date_soumission)
-                            : 'Brouillon'}
-                        </p>
-                      </div>
+                      <Link href={`/demandes/${demande.id}`}>
+                        <Button variant="outline" size="sm">
+                          <Eye className="h-4 w-4 mr-2" />
+                          Voir
+                        </Button>
+                      </Link>
                     </div>
-                    <Link href={`/demandes/${demande.id}`}>
-                      <Button variant="outline" size="sm">
-                        <Eye className="h-4 w-4 mr-2" />
-                        Voir
-                      </Button>
-                    </Link>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </CardContent>

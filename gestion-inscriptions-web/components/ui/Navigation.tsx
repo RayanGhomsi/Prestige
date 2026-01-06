@@ -32,7 +32,7 @@ export default function Navigation({ user, profile, onSignOut }: NavigationProps
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="/dashboard" className="flex items-center" onClick={closeMobileMenu}>
+            <Link href="/" className="flex items-center" onClick={closeMobileMenu}>
               <span className="text-lg sm:text-xl font-bold text-primary-600">École Prestige</span>
             </Link>
 
@@ -48,17 +48,6 @@ export default function Navigation({ user, profile, onSignOut }: NavigationProps
               >
                 <Home className="h-4 w-4 mr-2" />
                 Tableau de bord
-              </Link>
-              <Link
-                href="/demandes"
-                className={`px-3 py-2 text-sm font-medium flex items-center transition-colors ${
-                  isActive('/demandes')
-                    ? 'text-primary-600'
-                    : 'text-gray-700 hover:text-primary-600'
-                }`}
-              >
-                <FileText className="h-4 w-4 mr-2" />
-                Mes demandes
               </Link>
             </div>
           </div>
@@ -145,19 +134,6 @@ export default function Navigation({ user, profile, onSignOut }: NavigationProps
           >
             <Home className="h-5 w-5 mr-3" />
             Tableau de bord
-          </Link>
-
-          <Link
-            href="/demandes"
-            onClick={closeMobileMenu}
-            className={`flex items-center px-3 py-3 rounded-md text-base font-medium transition-colors ${
-              isActive('/demandes')
-                ? 'bg-primary-50 text-primary-600'
-                : 'text-gray-700 hover:bg-gray-50'
-            }`}
-          >
-            <FileText className="h-5 w-5 mr-3" />
-            Mes demandes
           </Link>
 
           <Link

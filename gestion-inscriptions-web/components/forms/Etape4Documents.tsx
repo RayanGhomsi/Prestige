@@ -163,22 +163,18 @@ export default function Etape4Documents({
     </div>
   );
 
-  const isFormValid =
-    acteNaissance.file && certificatVaccination.file && justificatifDomicile.file;
-
   return (
     <Card>
       <CardHeader>
         <CardTitle>Documents justificatifs</CardTitle>
         <CardDescription>
-          Veuillez télécharger tous les documents requis au format PDF
+          Téléchargez vos documents au format PDF (tous les documents sont optionnels)
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <Alert variant="info">
-            Tous les documents doivent être lisibles et au format PDF. Assurez-vous que les
-            informations sont clairement visibles.
+            Tous les documents sont optionnels et peuvent être ajoutés plus tard. Ils doivent être lisibles et au format PDF.
           </Alert>
 
           <div className="space-y-4">
@@ -186,7 +182,7 @@ export default function Etape4Documents({
               'Acte de naissance',
               acteNaissance,
               setActeNaissance,
-              true,
+              false,
               2 * 1024 * 1024
             )}
 
@@ -194,7 +190,7 @@ export default function Etape4Documents({
               'Certificat de vaccination',
               certificatVaccination,
               setCertificatVaccination,
-              true,
+              false,
               2 * 1024 * 1024
             )}
 
@@ -202,12 +198,12 @@ export default function Etape4Documents({
               'Justificatif de domicile',
               justificatifDomicile,
               setJustificatifDomicile,
-              true,
+              false,
               2 * 1024 * 1024
             )}
 
             {renderFileUpload(
-              'Derniers bulletins scolaires (optionnel)',
+              'Derniers bulletins scolaires',
               bulletins,
               setBulletins,
               false,
@@ -215,17 +211,11 @@ export default function Etape4Documents({
             )}
           </div>
 
-          {!isFormValid && (
-            <Alert variant="warning">
-              Veuillez télécharger tous les documents obligatoires pour continuer.
-            </Alert>
-          )}
-
           <div className="flex justify-between pt-6">
             <Button type="button" variant="outline" onClick={onPrevious}>
               Précédent
             </Button>
-            <Button type="submit" disabled={!isFormValid}>
+            <Button type="submit">
               Suivant
             </Button>
           </div>

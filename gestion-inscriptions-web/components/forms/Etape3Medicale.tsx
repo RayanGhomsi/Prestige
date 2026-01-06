@@ -51,14 +51,14 @@ export default function Etape3Medicale({
       <CardHeader>
         <CardTitle>Informations médicales</CardTitle>
         <CardDescription>
-          Ces informations sont essentielles pour la sécurité et le bien-être de votre enfant
+          Ces informations sont optionnelles mais recommandées pour la sécurité de votre enfant
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <Alert variant="info">
             Toutes les informations médicales sont strictement confidentielles et ne seront
-            utilisées qu'en cas d'urgence médicale.
+            utilisées qu'en cas d'urgence médicale. Vous pouvez remplir ce formulaire plus tard.
           </Alert>
 
           <Select
@@ -66,7 +66,7 @@ export default function Etape3Medicale({
             {...register('groupe_sanguin')}
             options={GROUPES_SANGUINS}
             error={errors.groupe_sanguin?.message}
-            required
+            helperText="Optionnel"
           />
 
           <Textarea
@@ -97,14 +97,14 @@ export default function Etape3Medicale({
           />
 
           <div className="border-t border-gray-200 pt-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Médecin traitant</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Médecin traitant</h3>
+            <p className="text-sm text-gray-600 mb-4">Ces informations sont optionnelles</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 label="Nom complet du médecin"
                 {...register('medecin_nom')}
                 error={errors.medecin_nom?.message}
                 placeholder="Dr. Nom Prénom"
-                required
               />
 
               <Input
@@ -113,7 +113,6 @@ export default function Etape3Medicale({
                 placeholder="690000000"
                 {...register('medecin_telephone')}
                 error={errors.medecin_telephone?.message}
-                required
               />
             </div>
           </div>

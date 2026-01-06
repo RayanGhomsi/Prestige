@@ -15,20 +15,24 @@ export type Etape1FormData = z.infer<typeof etape1Schema>;
 
 // Schéma de validation pour l'étape 2 - Informations des parents
 export const etape2Schema = z.object({
-  pere_nom: z.string().min(2, 'Le nom du père est requis'),
-  pere_prenom: z.string().min(2, 'Le prénom du père est requis'),
-  pere_profession: z.string().min(2, 'La profession du père est requise'),
+  pere_nom: z.string().optional().or(z.literal('')),
+  pere_prenom: z.string().optional().or(z.literal('')),
+  pere_profession: z.string().optional().or(z.literal('')),
   pere_telephone: z
     .string()
-    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
-  pere_email: z.string().email('Email invalide'),
-  mere_nom: z.string().min(2, 'Le nom de la mère est requis'),
-  mere_prenom: z.string().min(2, 'Le prénom de la mère est requis'),
-  mere_profession: z.string().min(2, 'La profession de la mère est requise'),
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres')
+    .optional()
+    .or(z.literal('')),
+  pere_email: z.string().email('Email invalide').optional().or(z.literal('')),
+  mere_nom: z.string().optional().or(z.literal('')),
+  mere_prenom: z.string().optional().or(z.literal('')),
+  mere_profession: z.string().optional().or(z.literal('')),
   mere_telephone: z
     .string()
-    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
-  mere_email: z.string().email('Email invalide'),
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres')
+    .optional()
+    .or(z.literal('')),
+  mere_email: z.string().email('Email invalide').optional().or(z.literal('')),
   tuteur_nom: z.string().optional(),
   tuteur_prenom: z.string().optional(),
   tuteur_lien: z.string().optional(),
@@ -37,26 +41,39 @@ export const etape2Schema = z.object({
     .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres')
     .optional()
     .or(z.literal('')),
-  adresse_complete: z.string().min(10, "L'adresse complète est requise"),
+  adresse_complete: z.string().optional().or(z.literal('')),
   urgence_nom: z.string().min(2, 'Le nom de la personne à contacter est requis'),
   urgence_telephone: z
     .string()
     .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
   urgence_lien: z.string().min(2, 'Le lien de parenté est requis'),
-});
+}).refine(
+  (data) => {
+    // Au moins un parent doit être renseigné (père ou mère)
+    const pereRempli = !!(data.pere_nom && data.pere_prenom && data.pere_telephone);
+    const mereRemplie = !!(data.mere_nom && data.mere_prenom && data.mere_telephone);
+    return pereRempli || mereRemplie;
+  },
+  {
+    message: 'Vous devez renseigner au moins un parent (père ou mère)',
+    path: ['pere_nom'], // Afficher l'erreur sur le premier champ
+  }
+);
 
 export type Etape2FormData = z.infer<typeof etape2Schema>;
 
 // Schéma de validation pour l'étape 3 - Informations médicales
 export const etape3Schema = z.object({
-  groupe_sanguin: z.string().min(1, 'Le groupe sanguin est requis'),
+  groupe_sanguin: z.string().optional().or(z.literal('')),
   allergies: z.string().optional(),
   maladies_chroniques: z.string().optional(),
   traitements_en_cours: z.string().optional(),
-  medecin_nom: z.string().min(2, 'Le nom du médecin est requis'),
+  medecin_nom: z.string().optional().or(z.literal('')),
   medecin_telephone: z
     .string()
-    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres'),
+    .regex(/^[0-9]{9}$/, 'Le numéro de téléphone doit contenir 9 chiffres')
+    .optional()
+    .or(z.literal('')),
 });
 
 export type Etape3FormData = z.infer<typeof etape3Schema>;

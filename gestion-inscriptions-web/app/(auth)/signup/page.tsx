@@ -41,6 +41,7 @@ export default function SignupPage() {
         email: data.email,
         password: data.password,
         options: {
+          emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/login`,
           data: {
             nom: data.nom,
             prenom: data.prenom,

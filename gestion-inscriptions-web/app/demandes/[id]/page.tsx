@@ -148,8 +148,8 @@ export default function DemandeDetailPage() {
     return (
       <div className="text-center py-12">
         <p className="text-red-600 mb-4">{error || 'Demande non trouvée'}</p>
-        <Link href="/demandes">
-          <Button variant="outline">Retour aux demandes</Button>
+        <Link href="/dashboard">
+          <Button variant="outline">Retour au dashboard</Button>
         </Link>
       </div>
     );
@@ -162,7 +162,7 @@ export default function DemandeDetailPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Link href="/demandes">
+          <Link href="/dashboard">
             <Button variant="outline" size="sm">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Retour

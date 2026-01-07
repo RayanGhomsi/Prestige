@@ -285,8 +285,8 @@ export default function ModifierDemandePage() {
     return (
       <div className="text-center py-12">
         <Alert variant="error">{error}</Alert>
-        <Link href="/demandes" className="mt-4 inline-block">
-          <Button variant="outline">Retour aux demandes</Button>
+        <Link href="/dashboard" className="mt-4 inline-block">
+          <Button variant="outline">Retour au dashboard</Button>
         </Link>
       </div>
     );
